@@ -213,6 +213,52 @@
 	</dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>project.properties</include>
+					<include>logback.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>**/MessagesResources.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.jasper</include>
+					<include>**/*.html</include>
+					<include>**/*.jpg</include>
+				</includes>
+				<excludes>
+					<exclude>logback.xml</exclude>
+				</excludes>
+			</resource>
+		</resources>
+
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>**/*.ods</exclude>
+					<exclude>**/*.xls</exclude>
+					<exclude>**/*.xlsx</exclude>
+				</excludes>
+			</testResource>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>**/*.ods</include>
+					<include>**/*.xls</include>
+					<include>**/*.xlsx</include>
+				</includes>
+			</testResource>
+		</testResources>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -230,6 +276,37 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>native2ascii-maven-plugin</artifactId>
+					<version>2.2</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>native2ascii</goal>
+							</goals>
+							<configuration>
+								<encoding>UTF8</encoding>
+								<src>${basedir}/resources</src>
+								<dest>target/classes</dest>
+								<includes>**/MessagesResources.properties</includes>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-archetype-plugin</artifactId>
+					<version>3.5.1</version>
+					<configuration>
+						<archetypeFilteredExtentions>java</archetypeFilteredExtentions>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>	
 	</build>
 
 	<profiles>
