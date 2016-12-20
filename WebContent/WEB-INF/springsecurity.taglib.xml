@@ -4,7 +4,7 @@
   "http://java.sun.com/dtd/facelet-taglib_1_0.dtd">
 <facelet-taglib>
 	<namespace>http://www.springframework.org/security/tags</namespace>
-	<!-- <tag>
+	<tag>
 		<tag-name>authorize</tag-name>
 		<handler-class>org.springframework.faces.security.FaceletsAuthorizeTagHandler</handler-class>
 	</tag>
@@ -27,5 +27,5 @@
 		<function-name>isAllowed</function-name>
 		<function-class>org.springframework.faces.security.FaceletsAuthorizeTagUtils</function-class>
 		<function-signature>boolean isAllowed(java.lang.String, java.lang.String)</function-signature>
-	</function> -->
+	</function>
 </facelet-taglib>

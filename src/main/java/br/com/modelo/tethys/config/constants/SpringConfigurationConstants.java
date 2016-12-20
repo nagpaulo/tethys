@@ -35,31 +35,5 @@ public interface SpringConfigurationConstants {
 													
 	String POSTGRE_MYBATIS_MAPPER_PACKAGE_TO_SCAN = "br.gov.ce.seduc.wsmodelo.dao.mappers.postgres";
 	
-	//XXX ORACLE CONSTANTS
-	String ORACLE_DATA_SOURCE_BEAN_ALIAS = "oracleDataSource";
-	String ORACLE_DATA_SOURCE_BEAN_QUALIFIER = "oracleDataSource";
-	
-	String ORACLE_MANAGER_FACTORY_BEAN_ALIAS = "entityManagerFactoryOracle";
-	String ORACLE_MANAGER_FACTORY_BEAN_QUALIFIER = "entityManagerFactoryOracle";
-	
-	String ORACLE_SQL_FACTORY_BEAN_ALIAS = "oracleSqlFactory";
-	String ORACLE_SQL_FACTORY_BEAN_QUALIFIER = "oracleSqlFactory";
-	
-	String ORACLE_MYBATIS_MAPPER_SCANNER_BEAN_ALIAS = "oracleMapperScannerConfigurer";
-	String ORACLE_MYBATIS_MAPPER_SCANNER_BEAN_QUALIFIER = "oracleMapperScannerConfigurer";
-	
-	String ORACLE_TRANSACTION_MANAGER_BEAN_ALIAS = "oracleTransactionManager";
-	String ORACLE_TRANSACTION_MANAGER_BEAN_QUALIFIER = "oracleTransactionManager";
-	
-	String ORACLE_TRANSACTION_TEMPLATE_BEAN_ALIAS = "oracleTransactionTemplate";
-	String ORACLE_TRANSACTION_TEMPLATE_BEAN_QUALIFIER = "oracleTransactionTemplate";
-	
-	String ORACLE_PERSISTENT_UNIT_NAME = "oraclePU";
-	
-	String[] ORACLE_ENTITY_PACKAGES_TO_SCAN = new String[]{		
-		"br.gov.ce.seduc.wsmodelo.entity.oracle"
-	}; 
-	
-	String ORACLE_MYBATIS_MAPPER_PACKAGE_TO_SCAN = "br.gov.ce.seduc.wsmodelo.dao.mappers.oracle";
-	
+		
 }

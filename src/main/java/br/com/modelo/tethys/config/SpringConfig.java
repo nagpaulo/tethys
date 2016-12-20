@@ -4,9 +4,13 @@ import java.util.ResourceBundle;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ComponentScan(basePackages = {
+		"br.com.modelo.tethys.view.bean"
+		, "br.com.modelo.tethys.service" })
 public class SpringConfig {
 	@Bean(name = "project")
 	@Qualifier(value = "project")
