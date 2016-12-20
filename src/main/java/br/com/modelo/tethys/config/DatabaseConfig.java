@@ -104,7 +104,7 @@ public class DatabaseConfig {
 		return entityManagerFactoryBean;
 	}
 
-	@Lazy(true)
+	/*@Lazy(true)
 	@Bean(name = POSTGRE_SQL_FACTORY_BEAN_ALIAS)
 	@Qualifier(value = POSTGRE_SQL_FACTORY_BEAN_QUALIFIER)
 	public SqlSessionFactoryBean postgresSqlFactory(@Qualifier(POSTGRE_DATA_SOURCE_BEAN_QUALIFIER) DataSource dataSource,
@@ -116,7 +116,7 @@ public class DatabaseConfig {
 				.getResources("classpath:mybatis/postgres/*.xml");
 		sqlSessionFactoryBean.setMapperLocations(resources);
 		return sqlSessionFactoryBean;
-	}
+	}*/
 
 	@Bean(name = POSTGRE_TRANSACTION_MANAGER_BEAN_ALIAS)
 	@Qualifier(POSTGRE_TRANSACTION_MANAGER_BEAN_QUALIFIER)
@@ -135,7 +135,7 @@ public class DatabaseConfig {
 		return new TransactionTemplate(transactionManager);
 	}
 
-	@SuppressWarnings("deprecation")
+	/*@SuppressWarnings("deprecation")
 	@Lazy(true)
 	@Bean(name = POSTGRE_MYBATIS_MAPPER_SCANNER_BEAN_ALIAS)
 	@Qualifier(value = POSTGRE_MYBATIS_MAPPER_SCANNER_BEAN_QUALIFIER)
@@ -145,5 +145,5 @@ public class DatabaseConfig {
 		mapperScannerConfigurer.setSqlSessionFactory(sessionFactoryBean.getObject());
 		mapperScannerConfigurer.setBasePackage(POSTGRE_MYBATIS_MAPPER_PACKAGE_TO_SCAN);
 		return mapperScannerConfigurer;
-	}
+	}*/
 }
