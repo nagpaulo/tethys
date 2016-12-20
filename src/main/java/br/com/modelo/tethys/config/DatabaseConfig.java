@@ -4,12 +4,7 @@ import static br.com.modelo.tethys.config.constants.SpringConfigurationConstants
 import static br.com.modelo.tethys.config.constants.SpringConfigurationConstants.POSTGRE_DATA_SOURCE_BEAN_QUALIFIER;
 import static br.com.modelo.tethys.config.constants.SpringConfigurationConstants.POSTGRE_ENTITY_PACKAGES_TO_SCAN;
 import static br.com.modelo.tethys.config.constants.SpringConfigurationConstants.POSTGRE_MANAGER_FACTORY_BEAN_ALIAS;
-import static br.com.modelo.tethys.config.constants.SpringConfigurationConstants.POSTGRE_MYBATIS_MAPPER_PACKAGE_TO_SCAN;
-import static br.com.modelo.tethys.config.constants.SpringConfigurationConstants.POSTGRE_MYBATIS_MAPPER_SCANNER_BEAN_ALIAS;
-import static br.com.modelo.tethys.config.constants.SpringConfigurationConstants.POSTGRE_MYBATIS_MAPPER_SCANNER_BEAN_QUALIFIER;
 import static br.com.modelo.tethys.config.constants.SpringConfigurationConstants.POSTGRE_PERSISTENT_UNIT_NAME;
-import static br.com.modelo.tethys.config.constants.SpringConfigurationConstants.POSTGRE_SQL_FACTORY_BEAN_ALIAS;
-import static br.com.modelo.tethys.config.constants.SpringConfigurationConstants.POSTGRE_SQL_FACTORY_BEAN_QUALIFIER;
 import static br.com.modelo.tethys.config.constants.SpringConfigurationConstants.POSTGRE_TRANSACTION_MANAGER_BEAN_ALIAS;
 import static br.com.modelo.tethys.config.constants.SpringConfigurationConstants.POSTGRE_TRANSACTION_MANAGER_BEAN_QUALIFIER;
 import static br.com.modelo.tethys.config.constants.SpringConfigurationConstants.POSTGRE_TRANSACTION_TEMPLATE_BEAN_ALIAS;
@@ -19,24 +14,17 @@ import static br.com.modelo.tethys.config.constants.SpringConfigurationConstants
 import static br.com.modelo.tethys.config.constants.SpringConfigurationConstants.PROJECT_CONFIGURATION_FILE_NAME;
 
 import java.beans.PropertyVetoException;
-import java.io.IOException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.core.io.support.ResourcePatternUtils;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;

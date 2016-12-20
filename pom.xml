@@ -17,6 +17,10 @@
 		<spring.data.version>1.12.5.RELEASE</spring.data.version>
 
 		<jackson.version>2.5.1</jackson.version>
+		<javax.servlet.version>3.0.1</javax.servlet.version>
+		<jsf.api.version>2.2.9</jsf.api.version>
+		<jsf.impl.version>2.2.9</jsf.impl.version>
+		<jstl.version>1.2</jstl.version>
 		<java.version>1.8</java.version>
 		<slf4j.version>1.6.6</slf4j.version>
 		<logback.version>1.0.1</logback.version>
@@ -35,6 +39,31 @@
 	</dependencyManagement>
 
 	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet.version}</version>
+		</dependency>
+
+		<!-- JSF -->
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>${jsf.api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>${jsf.impl.version}</version>
+		</dependency>
+
+		<!-- JSTL -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+
 		<!-- -->
 		<dependency>
 			<groupId>javax.el</groupId>
@@ -77,6 +106,13 @@
 			<artifactId>spring-data-commons</artifactId>
 			<version>${spring.data.version}</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>1.10.5.RELEASE</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -239,7 +275,6 @@
 			<artifactId>primefaces</artifactId>
 			<version>6.0</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>
