@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages = {
+		"br.com.modelo.tethys.controller",
 		"br.com.modelo.tethys.view.bean"
 		, "br.com.modelo.tethys.service" })
 public class SpringConfig {
