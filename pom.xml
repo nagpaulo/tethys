@@ -7,23 +7,25 @@
 	<packaging>war</packaging>
 	<name>Projeto Modelo</name>
 	<description>Aprendendo a Configurar Spring - Teste</description>
-
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-		<spring.version>4.3.4.RELEASE</spring.version>
-		<spring.security.framework.version>4.2.0.RELEASE</spring.security.framework.version>
-		<spring.webflow.version>2.4.4.RELEASE</spring.webflow.version>
-		<spring.data.version>1.12.5.RELEASE</spring.data.version>
 
-		<jackson.version>2.5.1</jackson.version>
-		<javax.servlet.version>3.0.1</javax.servlet.version>
-		<jsf.api.version>2.2.9</jsf.api.version>
-		<jsf.impl.version>2.2.9</jsf.impl.version>
-		<jstl.version>1.2</jstl.version>
+		<modulo.id>1</modulo.id>
+		<modulo.nome>${project.name}</modulo.nome>
+		<modulo.versao>${project.version}</modulo.versao>
+
+		<spring.version>4.2.4.RELEASE</spring.version>
+		<spring.webflow.version>2.4.1.RELEASE</spring.webflow.version>
+		<spring.security.framework.version>3.2.5.RELEASE</spring.security.framework.version>
+		<spring.data.version>1.7.2.RELEASE</spring.data.version>
 		<java.version>1.8</java.version>
 		<slf4j.version>1.6.6</slf4j.version>
 		<logback.version>1.0.1</logback.version>
+		<jackson.version>2.5.1</jackson.version>
+		<seduc.security.version>1.5.5</seduc.security.version>
+		<seduc.crud.version>1.7.2</seduc.crud.version>
+		<seduc.reports.version>1.4.1</seduc.reports.version>
 	</properties>
 
 	<dependencyManagement>
@@ -38,39 +40,9 @@
 		</dependencies>
 	</dependencyManagement>
 
+
 	<dependencies>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>${javax.servlet.version}</version>
-		</dependency>
-
-		<!-- JSF -->
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>${jsf.api.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<version>${jsf.impl.version}</version>
-		</dependency>
-
-		<!-- JSTL -->
-		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>${jstl.version}</version>
-		</dependency>
-
 		<!-- -->
-		<dependency>
-			<groupId>javax.el</groupId>
-			<artifactId>el-api</artifactId>
-			<version>2.2</version>
-			<scope>provided</scope>
-		</dependency>
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
@@ -89,38 +61,11 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- MyBatis Spring -->
 		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-			<version>3.2.7</version>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>2.0</version>
 		</dependency>
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis-spring</artifactId>
-			<version>1.2.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-commons</artifactId>
-			<version>${spring.data.version}</version><!--$NO-MVN-MAN-VER$ -->
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-jpa</artifactId>
-			<version>1.10.5.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.webflow</groupId>
-			<artifactId>spring-faces</artifactId>
-			<version>${spring.webflow.version}</version>
-		</dependency>
-
-
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -133,30 +78,17 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-
-		<!-- SPRING SECURITY -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-			<version>${spring.security.framework.version}</version><!--$NO-MVN-MAN-VER$ -->
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>${spring.security.framework.version}</version>
-		</dependency>
-
+		
+		 <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
 
 		<!-- EMAIL WITH SPRING -->
 		<dependency>
@@ -168,7 +100,78 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
 		</dependency>
+		<!-- -->
 
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+
+		<!-- MyBatis Spring -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.2.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+
+
+		<!-- SEDUC -->		
+		<dependency>
+			<groupId>br.gov.ce.seduc</groupId>
+			<artifactId>seduc-security</artifactId>
+			<version>${seduc.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>br.gov.ce.seduc</groupId>
+			<artifactId>seduc-crud</artifactId>
+			<version>${seduc.crud.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.sun.faces</groupId>
+					<artifactId>jsf-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.faces</groupId>
+					<artifactId>jsf-impl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.primefaces</groupId>
+					<artifactId>primefaces</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.primefaces.themes</groupId>
+					<artifactId>bootstrap</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>br.gov.ce.seduc</groupId>
+			<artifactId>seduc-reports</artifactId>
+			<version>${seduc.reports.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>jakarta-regexp</groupId>
+					<artifactId>jakarta-regexp</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
@@ -185,13 +188,20 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>9.3-1102-jdbc41</version><!--$NO-MVN-MAN-VER$ -->
+			<version>9.3-1102-jdbc41</version>
+		</dependency>
+
+		<!-- JDBC driver for Oracle -->
+		<dependency>
+			<groupId>oracle</groupId>
+			<artifactId>ojdbc</artifactId>
+			<version>11.1.0.7.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-envers</artifactId>
-			<version>5.2.5.Final</version><!--$NO-MVN-MAN-VER$ -->
+			<version>5.0.6.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.transaction</groupId>
@@ -206,33 +216,45 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- XA Transactions -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.atomikos</groupId> -->
+		<!-- <artifactId>transactions</artifactId> -->
+		<!-- <version>4.0.0M4</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.atomikos</groupId> -->
+		<!-- <artifactId>transactions-hibernate4</artifactId> -->
+		<!-- <version>4.0.0M4</version> -->
+		<!-- </dependency> -->
+
 		<!-- Loggers -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version><!--$NO-MVN-MAN-VER$ -->
+			<version>${logback.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
-			<version>${logback.version}</version><!--$NO-MVN-MAN-VER$ -->
+			<version>${logback.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version><!--$NO-MVN-MAN-VER$ -->
+			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jul-to-slf4j</artifactId>
-			<version>${slf4j.version}</version><!--$NO-MVN-MAN-VER$ -->
+			<version>${slf4j.version}</version>
 		</dependency>
 
 		<!-- TESTS -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.10</version><!--$NO-MVN-MAN-VER$ -->
+			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -247,21 +269,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>2.45.0</version><!--$NO-MVN-MAN-VER$ -->
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-firefox-driver</artifactId>
-			<version>2.45.0</version><!--$NO-MVN-MAN-VER$ -->
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>xml-apis</groupId>
 			<artifactId>xml-apis</artifactId>
-			<version>1.4.01</version><!--$NO-MVN-MAN-VER$ -->
+			<version>1.4.01</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -271,18 +281,8 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.thymeleaf</groupId>
-			<artifactId>thymeleaf</artifactId>
-			<version>3.0.2.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.primefaces</groupId>
-			<artifactId>primefaces</artifactId>
-			<version>6.0</version>
-		</dependency>
 	</dependencies>
+
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
@@ -331,20 +331,26 @@
 				</includes>
 			</testResource>
 		</testResources>
+
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version><!--$NO-MVN-MAN-VER$ -->
+				<version>2.3.2</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>3.0.0</version><!--$NO-MVN-MAN-VER$ -->
+				<version>2.4</version>
 				<configuration>
 					<warSourceDirectory>WebContent</warSourceDirectory>
+					<addVersionToProjectName>false</addVersionToProjectName>
+					<wtpversion>2.0</wtpversion>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -372,7 +378,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-archetype-plugin</artifactId>
-					<version>3.5.1</version>
+					<version>2.4</version>
 					<configuration>
 						<archetypeFilteredExtentions>java</archetypeFilteredExtentions>
 					</configuration>
@@ -403,7 +409,28 @@
 				<conf.pathFiles2>C:\\temp\\</conf.pathFiles2>
 			</properties>
 		</profile>
+
+		<profile>
+			<id>PRODUCAO</id>
+			<properties>
+				<activeProfile>PRODUCAO</activeProfile>
+				<logger.level>ERROR</logger.level>
+				<logger.appender>file</logger.appender>
+				<jpa.show_sql>false</jpa.show_sql>
+				<jpa.format_sql>false</jpa.format_sql>
+				<postgres.url>jdbc:postgresql://172.31.4.25/seduc</postgres.url>
+				<postgres.username>enem</postgres.username>
+				<postgres.password>enem</postgres.password>
+				<postgres.hibernate.temp.use_jdbc_metadata_defaults>false</postgres.hibernate.temp.use_jdbc_metadata_defaults>
+				<oracle.url>jdbc:oracle:thin:@172.31.4.28:1521:seduc</oracle.url>
+				<oracle.username>SIGERHWEB</oracle.username>
+				<oracle.password>PAXETBONUM</oracle.password>
+				<!-- Caminho para o ponto de montagem em producao -->
+				<conf.pathFiles>/mnt/sige_vt/</conf.pathFiles>
+			</properties>
+		</profile>
 	</profiles>
+
 
 	<repositories>
 		<repository>
@@ -417,4 +444,6 @@
 			</releases>
 		</repository>
 	</repositories>
+
+
 </project>
