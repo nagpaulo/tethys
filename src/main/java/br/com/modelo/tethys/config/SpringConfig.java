@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages = {"br.com.modelo.tethys.service" })
 public class SpringConfig {
+	
 	@Bean(name = "project")
 	@Qualifier(value = "project")
 	public ResourceBundle project() {

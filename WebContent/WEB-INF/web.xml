@@ -16,6 +16,16 @@
 		<extension>map</extension>
 		<mime-type>application/octet-stream</mime-type>
 	</mime-mapping>
+	
+	<servlet>
+		<servlet-name>FacesServlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>FacesServlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
 
 
 </web-app>

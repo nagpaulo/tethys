@@ -1,3 +1,4 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -23,9 +24,6 @@
 		<slf4j.version>1.6.6</slf4j.version>
 		<logback.version>1.0.1</logback.version>
 		<jackson.version>2.5.1</jackson.version>
-		<seduc.security.version>1.5.5</seduc.security.version>
-		<seduc.crud.version>1.7.2</seduc.crud.version>
-		<seduc.reports.version>1.4.1</seduc.reports.version>
 	</properties>
 
 	<dependencyManagement>
@@ -59,6 +57,11 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+		    <groupId>javax.faces</groupId>
+		    <artifactId>javax.faces-api</artifactId>
+		    <version>2.2</version>
 		</dependency>
 
 		<dependency>
@@ -130,48 +133,51 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.0</version>
 		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>4.2.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>4.2.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>4.2.0.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-jpa</artifactId>
+		    <version>1.10.5.RELEASE</version>
+		</dependency>
+		
+
 
 
 		<!-- SEDUC -->
-		<dependency>
-			<groupId>br.gov.ce.seduc</groupId>
-			<artifactId>seduc-security</artifactId>
-			<version>${seduc.security.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>br.gov.ce.seduc</groupId>
-			<artifactId>seduc-crud</artifactId>
-			<version>${seduc.crud.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>com.sun.faces</groupId>
-					<artifactId>jsf-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sun.faces</groupId>
-					<artifactId>jsf-impl</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.primefaces</groupId>
-					<artifactId>primefaces</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.primefaces.themes</groupId>
-					<artifactId>bootstrap</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>br.gov.ce.seduc</groupId>
-			<artifactId>seduc-reports</artifactId>
-			<version>${seduc.reports.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>jakarta-regexp</groupId>
-					<artifactId>jakarta-regexp</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+		<!-- <dependency> <groupId>br.gov.ce.seduc</groupId> <artifactId>seduc-security</artifactId> 
+			<version>${seduc.security.version}</version> </dependency> <dependency> <groupId>br.gov.ce.seduc</groupId> 
+			<artifactId>seduc-crud</artifactId> <version>${seduc.crud.version}</version> 
+			<exclusions> <exclusion> <groupId>com.sun.faces</groupId> <artifactId>jsf-api</artifactId> 
+			</exclusion> <exclusion> <groupId>com.sun.faces</groupId> <artifactId>jsf-impl</artifactId> 
+			</exclusion> <exclusion> <groupId>org.primefaces</groupId> <artifactId>primefaces</artifactId> 
+			</exclusion> <exclusion> <groupId>org.primefaces.themes</groupId> <artifactId>bootstrap</artifactId> 
+			</exclusion> </exclusions> </dependency> -->
+		<!-- <dependency> <groupId>br.gov.ce.seduc</groupId> <artifactId>seduc-reports</artifactId> 
+			<version>${seduc.reports.version}</version> <exclusions> <exclusion> <groupId>jakarta-regexp</groupId> 
+			<artifactId>jakarta-regexp</artifactId> </exclusion> </exclusions> </dependency> -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
