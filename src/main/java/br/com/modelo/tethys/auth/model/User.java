@@ -2,6 +2,7 @@ package br.com.modelo.tethys.auth.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,16 +14,28 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user", schema="tethys")
 public class User {
-    private Long id;
+    
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
+	private Long id;
+	
+	@Column(name="username")
     private String username;
+    
+	@Column(name="password")
     private String password;
+    
+    @Transient    
     private String passwordConfirm;
+    
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"), schema="tethys")
     private Set<Role> roles;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    
     public Long getId() {
         return id;
     }
@@ -55,9 +68,7 @@ public class User {
     public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
     }
-
-    @ManyToMany
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    
     public Set<Role> getRoles() {
         return roles;
     }

@@ -2,6 +2,7 @@ package br.com.modelo.tethys.auth.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,14 +11,21 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "role")
+@Table(name = "role", schema="tethys")
 public class Role {
-    private Long id;
+    
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
+	private Long id;
+	
+	@Column(name="name")
     private String name;
+	
+	@ManyToMany(mappedBy = "roles")
     private Set<User> users;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    
     public Long getId() {
         return id;
     }
@@ -34,7 +42,6 @@ public class Role {
         this.name = name;
     }
 
-    @ManyToMany(mappedBy = "roles")
     public Set<User> getUsers() {
         return users;
     }
