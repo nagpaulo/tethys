@@ -45,7 +45,8 @@ public class DatabaseConfig {
 
 	@Bean(name = POSTGRE_DATA_SOURCE_BEAN_ALIAS)
 	@Qualifier(POSTGRE_DATA_SOURCE_BEAN_QUALIFIER)
-	public DataSource postgresDataSource(@Qualifier(value = PROJECT_CONFIGURATION_FILE_BUNDLE_BEAN_QUALIFIER) ResourceBundle databaseBundle)
+	public DataSource postgresDataSource(
+			@Qualifier(value = PROJECT_CONFIGURATION_FILE_BUNDLE_BEAN_QUALIFIER) ResourceBundle databaseBundle)
 			throws PropertyVetoException {
 		ComboPooledDataSource ds = new ComboPooledDataSource();
 		ds.setDriverClass("org.postgresql.Driver");
@@ -70,7 +71,7 @@ public class DatabaseConfig {
 		return ds;
 	}
 
-	@Lazy(true)	
+	@Lazy(true)
 	@Bean(name = POSTGRE_MANAGER_FACTORY_BEAN_ALIAS)
 	@DependsOn(value = POSTGRE_DATA_SOURCE_BEAN_QUALIFIER)
 	public LocalContainerEntityManagerFactoryBean entityManagerFactoryPostgres(
@@ -79,9 +80,8 @@ public class DatabaseConfig {
 		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 		entityManagerFactoryBean.setDataSource(dataSource);
 		entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-		entityManagerFactoryBean.setPersistenceUnitName(POSTGRE_PERSISTENT_UNIT_NAME);
-
-		entityManagerFactoryBean.setPackagesToScan( POSTGRE_ENTITY_PACKAGES_TO_SCAN);
+		entityManagerFactoryBean.setPersistenceUnitName(POSTGRE_PERSISTENT_UNIT_NAME);		
+		entityManagerFactoryBean.setPackagesToScan(POSTGRE_ENTITY_PACKAGES_TO_SCAN);
 		Properties jpaProperties = new Properties();
 		jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 		jpaProperties.put("hibernate.temp.use_jdbc_metadata_defaults", "false");
@@ -92,19 +92,25 @@ public class DatabaseConfig {
 		return entityManagerFactoryBean;
 	}
 
-	/*@Lazy(true)
-	@Bean(name = POSTGRE_SQL_FACTORY_BEAN_ALIAS)
-	@Qualifier(value = POSTGRE_SQL_FACTORY_BEAN_QUALIFIER)
-	public SqlSessionFactoryBean postgresSqlFactory(@Qualifier(POSTGRE_DATA_SOURCE_BEAN_QUALIFIER) DataSource dataSource,
-			ResourceLoader resourceLoader) throws IOException {
-		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-		sqlSessionFactoryBean.setDataSource(dataSource);
-		sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("mybatis/mybatis-postgres-config.xml"));
-		Resource[] resources = ResourcePatternUtils.getResourcePatternResolver(resourceLoader)
-				.getResources("classpath:mybatis/postgres/*.xml");
-		sqlSessionFactoryBean.setMapperLocations(resources);
-		return sqlSessionFactoryBean;
-	}*/
+	/*
+	 * @Lazy(true)
+	 * 
+	 * @Bean(name = POSTGRE_SQL_FACTORY_BEAN_ALIAS)
+	 * 
+	 * @Qualifier(value = POSTGRE_SQL_FACTORY_BEAN_QUALIFIER) public
+	 * SqlSessionFactoryBean
+	 * postgresSqlFactory(@Qualifier(POSTGRE_DATA_SOURCE_BEAN_QUALIFIER)
+	 * DataSource dataSource, ResourceLoader resourceLoader) throws IOException
+	 * { SqlSessionFactoryBean sqlSessionFactoryBean = new
+	 * SqlSessionFactoryBean(); sqlSessionFactoryBean.setDataSource(dataSource);
+	 * sqlSessionFactoryBean.setConfigLocation(new
+	 * ClassPathResource("mybatis/mybatis-postgres-config.xml")); Resource[]
+	 * resources =
+	 * ResourcePatternUtils.getResourcePatternResolver(resourceLoader)
+	 * .getResources("classpath:mybatis/postgres/*.xml");
+	 * sqlSessionFactoryBean.setMapperLocations(resources); return
+	 * sqlSessionFactoryBean; }
+	 */
 
 	@Bean(name = POSTGRE_TRANSACTION_MANAGER_BEAN_ALIAS)
 	@Qualifier(POSTGRE_TRANSACTION_MANAGER_BEAN_QUALIFIER)
@@ -123,15 +129,22 @@ public class DatabaseConfig {
 		return new TransactionTemplate(transactionManager);
 	}
 
-	/*@SuppressWarnings("deprecation")
-	@Lazy(true)
-	@Bean(name = POSTGRE_MYBATIS_MAPPER_SCANNER_BEAN_ALIAS)
-	@Qualifier(value = POSTGRE_MYBATIS_MAPPER_SCANNER_BEAN_QUALIFIER)
-	public MapperScannerConfigurer configPostgresMapperScanner(
-			@Qualifier(POSTGRE_SQL_FACTORY_BEAN_QUALIFIER) SqlSessionFactoryBean sessionFactoryBean) throws Exception {
-		MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
-		mapperScannerConfigurer.setSqlSessionFactory(sessionFactoryBean.getObject());
-		mapperScannerConfigurer.setBasePackage(POSTGRE_MYBATIS_MAPPER_PACKAGE_TO_SCAN);
-		return mapperScannerConfigurer;
-	}*/
+	/*
+	 * @SuppressWarnings("deprecation")
+	 * 
+	 * @Lazy(true)
+	 * 
+	 * @Bean(name = POSTGRE_MYBATIS_MAPPER_SCANNER_BEAN_ALIAS)
+	 * 
+	 * @Qualifier(value = POSTGRE_MYBATIS_MAPPER_SCANNER_BEAN_QUALIFIER) public
+	 * MapperScannerConfigurer configPostgresMapperScanner(
+	 * 
+	 * @Qualifier(POSTGRE_SQL_FACTORY_BEAN_QUALIFIER) SqlSessionFactoryBean
+	 * sessionFactoryBean) throws Exception { MapperScannerConfigurer
+	 * mapperScannerConfigurer = new MapperScannerConfigurer();
+	 * mapperScannerConfigurer.setSqlSessionFactory(sessionFactoryBean.getObject
+	 * ()); mapperScannerConfigurer.setBasePackage(
+	 * POSTGRE_MYBATIS_MAPPER_PACKAGE_TO_SCAN); return mapperScannerConfigurer;
+	 * }
+	 */
 }
