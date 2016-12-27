@@ -8,10 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = {		
-		"br.com.modelo.tethys.service", 
-		"br.com.modelo.tethys.auth.services"
-})
+@ComponentScan(basePackages = {"br.com.modelo.tethys.auth.services", "br.com.modelo.tethys.service"})
 public class SpringConfig {
 	
 	@Bean(name = "project")
