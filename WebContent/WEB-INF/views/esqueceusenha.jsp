@@ -4,7 +4,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <jsp:include page="../template/_padrao_header.jsp"/>
     <form:form method="POST" modelAttribute="userForm" class="form-signin">
-    	<h3 class="form-signin-heading">Recuperação de Senha</h3>
+    	<h3 class="form-signin-heading"><i class="fa fa-share-square-o info"></i> Recuperação de Senha</h3>
         <c:if test="${message != null}">	            
             <div class="alert ${type}" role="alert">
 				<i class="fa ${icons} fa-lg" aria-hidden="true"></i> <span>${message}</span>
@@ -40,4 +40,10 @@
         	</div>
         </div>        
     </form:form>
+    
+    <script type="text/javascript">
+	    $(function(){
+	        $('#cpf').mask('999.999.999-99');
+	    });
+	</script>
 <jsp:include page="../template/_padrao_footer.jsp"/>
