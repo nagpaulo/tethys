@@ -31,7 +31,7 @@ public class LoginController {
         return "registration";
     }
 
-    /*@RequestMapping(value = "/registration", method = RequestMethod.POST)
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
         userValidator.validate(userForm, bindingResult);
 
@@ -44,16 +44,21 @@ public class LoginController {
         securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
 
         return "redirect:/api/home";
-    }*/
+    }
     
-    @RequestMapping(value ="/esqueceusenha")
-    public String esqueceusenha(@ModelAttribute("userForm") User userForm, Model model, BindingResult bindingResult){
-    	
-    	if (bindingResult.hasErrors()) {
-            return "esqueceusenha";
-        }
-    	
+    @RequestMapping(value = "/esqueceusenha", method = RequestMethod.GET)
+    public String esqueceusenha(Model model){  	
+    	model.addAttribute("userForm", new User());
     	return "esqueceusenha";
+    }
+    
+    @RequestMapping(value = "/esqueceusenha", method = RequestMethod.POST)
+    public String esqueceusenha(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+        	 return "login";
+        }
+         
+        return "redirect:/api/login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

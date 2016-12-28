@@ -4,26 +4,40 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <jsp:include page="../template/_padrao_header.jsp"/>
     <form:form method="POST" modelAttribute="userForm" class="form-signin">
-    	<h2 class="form-signin-heading">Recuperação de senha</h2>
+    	<h3 class="form-signin-heading">Recuperação de Senha</h3>
         <c:if test="${message != null}">	            
             <div class="alert ${type}" role="alert">
 				<i class="fa ${icons} fa-lg" aria-hidden="true"></i> <span>${message}</span>
 			</div>
 		</c:if>
-        <spring:bind path="login">
+        <spring:bind path="username">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="login" class="form-control" placeholder="Usuario"
+                <form:input type="text" path="username" class="form-control" placeholder="Username"
                             autofocus="true"></form:input>
-                <form:errors path="login"></form:errors>
+                <form:errors path="username"></form:errors>
             </div>
         </spring:bind>
-
         <spring:bind path="email">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="email" class="form-control" placeholder="E-mail"></form:input>
+                <form:input type="text" path="email" class="form-control" placeholder="Email"
+                            autofocus="true"></form:input>
                 <form:errors path="email"></form:errors>
             </div>
         </spring:bind>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+        <spring:bind path="cpf">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="cpf" class="form-control" placeholder="CPF"
+                            autofocus="true"></form:input>
+                <form:errors path="cpf"></form:errors>
+            </div>
+        </spring:bind>
+        <div class="row">
+        	<div class="col-xs-6">
+	        	<button class="btn btn-lg btn-primary btn-block" type="submit">Enviar</button>
+        	</div>
+        	<div class="col-xs-6">
+        		<button class="btn btn-lg btn-danger btn-block" onclick="window.location='${contextPath}/api/login'" type="button">Voltar</button>
+        	</div>
+        </div>        
     </form:form>
 <jsp:include page="../template/_padrao_footer.jsp"/>
