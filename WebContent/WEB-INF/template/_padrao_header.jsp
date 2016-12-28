@@ -3,7 +3,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -14,7 +13,7 @@
 	<meta name="description" content="Sistema em desenvolvimeto">
 	<meta name="author" content="Paulo Roberto Mesquita da Silva">
 	
-	<title>Template</title>
+	<title>Sistema Gerencial::</title>
 	
 	<link href="${contextPath}/resources/css/bootstrap.min.css"	rel="stylesheet">
 	<link href="${contextPath}/resources/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>

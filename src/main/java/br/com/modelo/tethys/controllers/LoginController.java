@@ -48,11 +48,17 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
-
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
+        if (error != null){
+            model.addAttribute("message", "Usuário ou senha inválidos.");
+        	model.addAttribute("type", "alert-danger");
+        	model.addAttribute("icons", "fa-exclamation-circle");
+        }
+        
+        if (logout != null){
+            model.addAttribute("message", "Você saiu do sistema.");
+        	model.addAttribute("type", "alert-warning");
+        	model.addAttribute("icons", "fa-info-circle");
+        }	
 
         return "login";
     }

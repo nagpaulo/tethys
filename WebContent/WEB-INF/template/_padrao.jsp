@@ -24,9 +24,7 @@
 
 <body>
 	<div class="container">
-		<jsp:body>
-			
-		</jsp:body>		
+		
 	</div>	
 	<script type="text/javascript" src="${contextPath}/resources/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/js/bootstrap.min.js"></script> 
