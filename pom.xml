@@ -199,13 +199,6 @@
 			<version>9.3-1102-jdbc41</version>
 		</dependency>
 
-		<!-- JDBC driver for Oracle -->
-		<dependency>
-			<groupId>oracle</groupId>
-			<artifactId>ojdbc</artifactId>
-			<version>11.1.0.7.0</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-envers</artifactId>
@@ -499,7 +492,7 @@
 				<logger.appender>console</logger.appender>
 				<jpa.show_sql>true</jpa.show_sql>
 				<jpa.format_sql>true</jpa.format_sql>
-				<postgres.url>jdbc:postgresql://localhost/tethys</postgres.url>
+				<postgres.url>jdbc:postgresql://localhost:5433/labnascimento</postgres.url>
 				<postgres.username>postgres</postgres.username>
 				<postgres.password>postgres</postgres.password>
 				<postgres.hibernate.temp.use_jdbc_metadata_defaults>false</postgres.hibernate.temp.use_jdbc_metadata_defaults>
@@ -532,7 +525,7 @@
 	</profiles>
 
 
-	<repositories>
+	<!-- <repositories>
 		<repository>
 			<id>central</id>
 			<url>http://mvnrepository.seduc.ce.gov.br/artifactory/libs-release</url>
@@ -543,7 +536,7 @@
 				<updatePolicy>always</updatePolicy>
 			</releases>
 		</repository>
-	</repositories>
+	</repositories> -->
 
 
 </project>

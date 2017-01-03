@@ -85,3 +85,17 @@ body {
     bottom: 0;
     width: 100%;
 }
+
+#top .titulo {
+    margin: 0 !important;
+    font-size: large;
+    text-shadow: 1px 1px 2px #cccccc;
+}
+
+#top .titulo .line2 {
+    color: #2a6497;
+    display: block;
+    font-weight: bold;
+    font-size: 150%;
+    margin-top: -5px;
+}

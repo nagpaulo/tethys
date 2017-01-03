@@ -22,7 +22,7 @@ public class UserValidator implements Validator {
     @Override
     public void validate(Object o, Errors errors) {
         User user = (User) o;
-
+        
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
         if (user.getUsername().length() < 6 || user.getUsername().length() > 32) {
             errors.rejectValue("username", "Size.userForm.username");
@@ -38,6 +38,13 @@ public class UserValidator implements Validator {
 
         if (!user.getPasswordConfirm().equals(user.getPassword())) {
             errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
+        }
+        
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cpf", "NotEmpty");
+        if(user.getCpf() == null){
+        	errors.rejectValue("cpf", "Empty");
+        }else if(user.getCpf().toString().length() != 11){
+        	errors.rejectValue("cpf", "Invalido");
         }
     }
 }

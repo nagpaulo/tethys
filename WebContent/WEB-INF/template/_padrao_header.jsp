@@ -26,15 +26,15 @@
 		<div class="container">
 			<div class="col-sm-8">
 				<div class="pull-left titulo">
-					<span>Sample Title 1</span> 
-					<span class="line2">Sample Title 2</span>
+					<span>Sistema de Gestão</span> 
+					<span class="line2">Laboratório Nascimento</span>
 				</div>
 			</div>
 
 			<div class="col-sm-4 hidden-xs">
-				<img
-					src="http://organismoscolegiados.seduc.ce.gov.br/assets/img/logo_seduc.png"
-					class="pull-right img-responsive" id="logo-seduc">
+				<%-- <img src="${contextPath}/resources/img/logo_nascimento.jpg" 
+				class="pull-right img-responsive" id="logo-seduc"> --%>
+				<i class="fa fa-envira fa-3x pull-right img-responsive" aria-hidden="true" id="logo-seduc"></i>
 			</div>
 		</div>
 	</div>

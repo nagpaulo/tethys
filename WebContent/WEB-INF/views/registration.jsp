@@ -5,9 +5,9 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -54,7 +54,22 @@
                 <form:errors path="passwordConfirm"></form:errors>
             </div>
         </spring:bind>
-
+		
+		<spring:bind path="email">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="email" class="form-control" placeholder="Informe seu Email"></form:input>
+                <form:errors path="email"></form:errors>
+            </div>
+        </spring:bind>		
+		
+		<spring:bind path="cpf">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="cpf" class="form-control" placeholder="Informe seu CPF"
+                            autofocus="true"></form:input>
+                <form:errors path="cpf" ></form:errors>
+            </div>
+        </spring:bind>
+		
         <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
     </form:form>
 

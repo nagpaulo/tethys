@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.beans.factory.annotation.Value;
+
 @Entity
 @Table(name = "user", schema="tethys")
 public class User {
@@ -32,7 +34,7 @@ public class User {
     private String email;
 	
 	@Column(name="cpf")
-    private String cpf;
+    private Integer cpf;
     
     @Transient    
     private String passwordConfirm;
@@ -74,11 +76,11 @@ public class User {
 		this.email = email;
 	}
 
-	public String getCpf() {
+	public Integer getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
+	public void setCpf(Integer cpf) {
 		this.cpf = cpf;
 	}
 

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -59,4 +60,14 @@ private List<String> allowedOrigins = new ArrayList<>();
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {		
 		super.configureMessageConverters(converters);
 	}
+	
+	@Bean
+    public ResourceBundleMessageSource messageSource() {
+        ResourceBundleMessageSource source = new ResourceBundleMessageSource();
+        source.setBasename("validation");
+        source.setUseCodeAsDefaultMessage(true);
+        source.setDefaultEncoding("UTF-8");
+        return source;
+    }
+	
 }
