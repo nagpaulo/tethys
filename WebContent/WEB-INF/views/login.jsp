@@ -1,8 +1,11 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<jsp:include page="../template/_padrao_header.jsp"/>		
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="template" tagdir="/WEB-INF/tags" %>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<template:_padrao>
+<jsp:body>		
 	<form method="POST" action="${contextPath}/api/login" class="form-signin">	
 		<fieldset>
 			<legend><i class="fa fa-lock"></i> Área Restrita</legend>
@@ -25,4 +28,5 @@
 	        </div>
 		</fieldset>
     </form>
-<jsp:include page="../template/_padrao_footer.jsp"/>
+</jsp:body>
+</template:_padrao>
