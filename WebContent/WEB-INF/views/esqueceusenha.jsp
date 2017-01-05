@@ -5,6 +5,13 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <template:_padrao>
+<jsp:attribute name="extraScripts">
+	<script type="text/javascript">
+	    $(function(){
+	        $('#cpf').mask('999.999.999-99');
+	    });
+	</script>
+</jsp:attribute>
 <jsp:body>
     <form:form method="POST" modelAttribute="userForm" class="form-signin">
     	<fieldset>
@@ -45,10 +52,5 @@
 	        </div>        
 	    </form:form>
     </fieldset>
-    <script type="text/javascript">
-	    $(function(){
-	        $('#cpf').mask('999.999.999-99');
-	    });
-	</script>
 </jsp:body>
 </template:_padrao>

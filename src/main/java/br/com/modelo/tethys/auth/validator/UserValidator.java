@@ -43,7 +43,7 @@ public class UserValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cpf", "NotEmpty");
         if(user.getCpf() == null){
         	errors.rejectValue("cpf", "Empty");
-        }else if(user.getCpf().toString().length() != 11){
+        }else if(user.getCpf().toString().length() != 14){
         	errors.rejectValue("cpf", "Invalido");
         }
     }
