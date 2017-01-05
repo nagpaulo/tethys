@@ -31,8 +31,8 @@
 		<div class="container">
 			<div class="col-sm-8">
 				<div class="pull-left titulo">
-					<span>Sistema de Gestão</span> 
-					<span class="line2">Laboratório Nascimento</span>
+					<!-- <span>Sistema de Gestão</span> 
+					<span class="line2">Laboratório Nascimento</span> -->
 				</div>
 			</div>
 
@@ -48,7 +48,7 @@
 		<jsp:doBody />
 	</div>
 	<div id="footer" class="hidden-xs footer-fixed">
-		<span>2017 - Labnascimento :: Proteses Odontológica Nascimento LTDA</span>
+		<span>&copy 2017</span><!-- <span> Labnascimento :: Proteses Odontológica Nascimento LTDA</span> -->
 	</div>
 	<script type="text/javascript" src="${contextPath}/resources/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/js/bootstrap.min.js"></script> 
