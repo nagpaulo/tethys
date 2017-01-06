@@ -20,9 +20,9 @@
 	            <input name="password" type="password" class="form-control" placeholder="Password"/>
 	            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	
-	            <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+	            <button class="btn btn-lg btn-default btn-block" type="submit">Entrar</button>
 	            <h4 class="text-center">
-	            	<i class="fa fa-share-square-o info" aria-hidden="true"></i>
+	            	<i class="fa fa-share-square-o" aria-hidden="true"></i>
 	            	<a href="${contextPath}/api/esqueceusenha"> Esqueceu a senha?</a>
 	            </h4>
 	        </div>
