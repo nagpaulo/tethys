@@ -2,6 +2,7 @@ package br.com.modelo.tethys.auth.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -9,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -42,16 +46,21 @@ public class Usuario implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dtNascimento;
 	@Column(name = "fl_sexo")
-	private String flSexo;
+	private String sexo;
 	@Column(name = "fl_atualizousenha")
-	private Boolean flAtualizousenha;
+	private Boolean atualizousenha;
 	@Column(name = "dt_criacao")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dtCriacao;
 	@Column(name = "fl_senha_corrigida")
-	private Boolean flSenhaCorrigida;
+	private Boolean senhaCorrigida;
 	@Column(name = "fl_ativo")
-	private Boolean flAtivo;
+	private Boolean ativo;
+	
+	@ManyToMany
+    @JoinTable(name = "tb_usuariogrupos", joinColumns = @JoinColumn(name = "cd_usuario"), inverseJoinColumns = @JoinColumn(name = "cd_grupo"), schema="tethys")
+    private Set<Grupo> usuarioGrupo;	
+	
 	public Long getId() {
 		return id;
 	}
@@ -94,17 +103,17 @@ public class Usuario implements Serializable {
 	public void setDtNascimento(Date dtNascimento) {
 		this.dtNascimento = dtNascimento;
 	}
-	public String getFlSexo() {
-		return flSexo;
+	public String getSexo() {
+		return sexo;
 	}
-	public void setFlSexo(String flSexo) {
-		this.flSexo = flSexo;
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
-	public Boolean getFlAtualizousenha() {
-		return flAtualizousenha;
+	public Boolean getAtualizousenha() {
+		return atualizousenha;
 	}
-	public void setFlAtualizousenha(Boolean flAtualizousenha) {
-		this.flAtualizousenha = flAtualizousenha;
+	public void setAtualizousenha(Boolean atualizousenha) {
+		this.atualizousenha = atualizousenha;
 	}
 	public Date getDtCriacao() {
 		return dtCriacao;
@@ -112,17 +121,17 @@ public class Usuario implements Serializable {
 	public void setDtCriacao(Date dtCriacao) {
 		this.dtCriacao = dtCriacao;
 	}
-	public Boolean getFlSenhaCorrigida() {
-		return flSenhaCorrigida;
+	public Boolean getSenhaCorrigida() {
+		return senhaCorrigida;
 	}
-	public void setFlSenhaCorrigida(Boolean flSenhaCorrigida) {
-		this.flSenhaCorrigida = flSenhaCorrigida;
+	public void setSenhaCorrigida(Boolean senhaCorrigida) {
+		this.senhaCorrigida = senhaCorrigida;
 	}
-	public Boolean getFlAtivo() {
-		return flAtivo;
+	public Boolean getAtivo() {
+		return ativo;
 	}
-	public void setFlAtivo(Boolean flAtivo) {
-		this.flAtivo = flAtivo;
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 	@Override
 	public int hashCode() {

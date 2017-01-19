@@ -2,6 +2,7 @@ package br.com.modelo.tethys.auth.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -45,7 +48,11 @@ public class Grupo implements Serializable{
 
 	public Long getId() {
 		return id;
-	}
+	}	
+	
+	@ManyToMany
+    @JoinTable(name = "tb_grupotransacoes", joinColumns = @JoinColumn(name = "cd_grupo"), inverseJoinColumns = @JoinColumn(name = "cd_transacao"), schema="tethys")
+    private Set<Transacao> grupoTransacao;
 
 	public void setId(Long id) {
 		this.id = id;

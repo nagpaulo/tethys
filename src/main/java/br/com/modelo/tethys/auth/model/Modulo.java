@@ -1,12 +1,16 @@
 package br.com.modelo.tethys.auth.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +25,11 @@ public class Modulo implements Serializable{
     private Long id;
     
 	@Column(name = "ds_modulo")
-    private String modulo;	
+    private String modulo;
+	
+	@ManyToMany
+    @JoinTable(name = "tb_modulotransacao", joinColumns = @JoinColumn(name = "cd_modulo"), inverseJoinColumns = @JoinColumn(name = "cd_transacao"), schema="tethys")
+    private Set<Transacao> moduloTransacao;
 
 	public Long getId() {
 		return id;
