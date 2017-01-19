@@ -15,9 +15,9 @@
 						<i class="fa ${icons} fa-lg" aria-hidden="true"></i> <span>${message}</span>
 					</div>
 				</c:if>
-	            <input name="username" type="text" class="form-control" placeholder="Username"
+	            <input name="username" type="text" class="form-control" placeholder="Usuário"
 	                   autofocus="true"/>
-	            <input name="password" type="password" class="form-control" placeholder="Password"/>
+	            <input name="password" type="password" class="form-control" placeholder="Senha"/>
 	            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	
 	            <button class="btn btn-lg btn-default btn-block" type="submit">Entrar</button>
