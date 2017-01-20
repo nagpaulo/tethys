@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
  * @author Paulo Roberto
  */
 @Entity
-@Table(name = "tb_usuario")
+@Table(name = "tb_usuario", schema="tethys")
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 5110990345399379981L;
@@ -132,6 +132,12 @@ public class Usuario implements Serializable {
 	}
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
+	}
+	public Set<Grupo> getUsuarioGrupo() {
+		return usuarioGrupo;
+	}
+	public void setUsuarioGrupo(Set<Grupo> usuarioGrupo) {
+		this.usuarioGrupo = usuarioGrupo;
 	}
 	@Override
 	public int hashCode() {

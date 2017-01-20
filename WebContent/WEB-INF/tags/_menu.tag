@@ -5,7 +5,7 @@
 <!-- INICIO NAV (alterar pra include)-->
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container">
-		<security:authorize access="hasRole('ROLE_USER')">
+		<security:authorize access="hasRole('ROLE_USER_AUTH')">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
