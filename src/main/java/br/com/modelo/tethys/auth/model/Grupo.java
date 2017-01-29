@@ -90,6 +90,14 @@ public class Grupo implements Serializable{
 		NivelAcesso = nivelAcesso;
 	}
 
+	public Set<Transacao> getGrupoTransacao() {
+		return grupoTransacao;
+	}
+
+	public void setGrupoTransacao(Set<Transacao> grupoTransacao) {
+		this.grupoTransacao = grupoTransacao;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

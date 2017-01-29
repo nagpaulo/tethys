@@ -27,9 +27,15 @@
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">Alterar senha</a></li>
 						<li class="divider"></li>
-						<li><a href="#">Usuario</a></li>
-						<li><a href="#">Transações</a></li>
-						<li><a href="#">Grupos</a></li>
+						<security:authorize access="hasRole('ROLE_MANTER_USUARIO')">
+							<li><a href="#">Usuario</a></li>
+						</security:authorize>	
+						<security:authorize access="hasRole('ROLE_MANTER_TRANSACAO')">
+							<li><a href="#">Transações</a></li>
+						</security:authorize>
+						<security:authorize access="hasRole('ROLE_MANTER_GRUPOUSUARIO')">
+							<li><a href="#">Grupos</a></li>
+						</security:authorize>
 						<li class="divider"></li>
 						<li>
 							<c:if test="${pageContext.request.userPrincipal.name != null}">

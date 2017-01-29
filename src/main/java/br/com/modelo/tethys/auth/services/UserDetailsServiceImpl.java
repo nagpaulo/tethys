@@ -49,21 +49,31 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	    			if(grupo.getGrupo().equals(new String("MASTER"))){
 						listTransacao = transacaoRepository.findAll();
 						listTransacao.forEach(transacao->{
-							grantedAuthorities.add(new SimpleGrantedAuthority("PERM_"+transacao.getLabel().toUpperCase()));
+							grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+transacao.getLabel().toUpperCase()));
 						});						
 						return new org.springframework.security.core.userdetails.User(user.getUsuario(), user.getSenha(), grantedAuthorities);
+					}else{
+						Set<Transacao> setTransacao = grupo.getGrupoTransacao();
+						setTransacao.forEach(transacao->{
+							grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+transacao.getLabel().toUpperCase()));
+						});
 					}
 	    		}
-			}
+			}	    	
+	    	
 	    	if(listGrupo.isEmpty()){
 	    		return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getSenha(), false, false, false, false, grantedAuthorities);
-	    	} 
+	    	}else{
+	    		return new org.springframework.security.core.userdetails.User(user.getUsuario(), user.getSenha(), grantedAuthorities);
+	    	}
+	    	
+	    	//Gravar acesso.
+	    	
 	    		
     	}else{
     		 return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getSenha(), false, false, false, false, grantedAuthorities);
     	}
 
-    	return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getSenha(), false, false, false, false, grantedAuthorities);
     }
-
 }
+ 
