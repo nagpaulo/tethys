@@ -141,3 +141,12 @@ body {
     background: #a2b1aa;
     color: #ffffff !important;
 }
+
+.user-info {
+    color: #ffffff;
+    padding-top: 2px;
+    font-size: 11px;
+    margin-top: -30px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}

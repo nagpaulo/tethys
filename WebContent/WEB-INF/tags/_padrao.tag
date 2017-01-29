@@ -6,6 +6,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="template" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -29,10 +30,17 @@
 <body>
 	<div id="top">
 		<div class="container">
+			<div class="user-info text-right">
+		    	<security:authorize access="hasRole('ROLE_USER_AUTH')">
+		    		<i class="fa fa-user"></i> <span>${pageContext.request.userPrincipal.name}</span>
+		    		<i class="fa fa-home"></i> <span>MATRIZ</span>
+		    		<i class="fa fa-calendar-o"></i> <span>Ultimo Acesso</span>
+		    	</security:authorize>
+	    	</div>
 			<div class="col-sm-8">
 				<div class="pull-left titulo">
-					<!-- <span>Sistema de Gestão</span> 
-					<span class="line2">Laboratório Nascimento</span> -->
+					<span>Sistema de Gestão</span> 
+					<span class="line2">Laboratório Nascimento</span>
 				</div>
 			</div>
 
@@ -48,7 +56,7 @@
 		<jsp:doBody />
 	</div>
 	<div id="footer" class="hidden-xs footer-fixed">
-		<span>&copy 2017</span><!-- <span> Labnascimento :: Proteses Odontológica Nascimento LTDA</span> -->
+		<span>&copy 2017</span><span> Labnascimento :: Proteses Odontológica Nascimento LTDA</span>
 	</div>
 	<script type="text/javascript" src="${contextPath}/resources/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/js/bootstrap.min.js"></script> 
