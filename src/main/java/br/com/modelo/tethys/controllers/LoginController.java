@@ -75,7 +75,7 @@ public class LoginController {
         
         if (logout != null){
         	//Registrar data do logout.
-        	//usuarioAcessoService.regitrarDateEndLogout();
+        	usuarioAcessoService.regitrarDateEndLogout();
         	
             model.addAttribute("message", "Você saiu do sistema.");
         	model.addAttribute("type", "alert-warning");

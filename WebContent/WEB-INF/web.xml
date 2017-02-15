@@ -19,7 +19,7 @@
 	
 	<servlet>
 		<servlet-name>FacesServlet</servlet-name>
-		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<servlet-class>javax.faces.webapFp.FacesServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
@@ -27,5 +27,9 @@
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
 
-
+	<listener>
+	    <listener-class>
+	        org.springframework.web.context.request.RequestContextListener
+	    </listener-class>
+	</listener>
 </web-app>

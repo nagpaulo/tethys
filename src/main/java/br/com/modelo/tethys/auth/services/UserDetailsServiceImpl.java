@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,6 +18,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import br.com.modelo.tethys.auth.model.Grupo;
 import br.com.modelo.tethys.auth.model.Modulo;
@@ -41,6 +45,9 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	
 	@Autowired
 	private ModuloRepository moduloRepository;
+
+	@Autowired(required = true)
+	private HttpServletRequest requestServlet; 
 	
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor=Exception.class)
@@ -87,18 +94,19 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     }
     
     public void GravarAcesso(Usuario user, Modulo modulo){
-    	UsuarioAcesso usuarioAcesso = new UsuarioAcesso();    	
-    	List<UsuarioAcesso> listAcessUser = usuarioAcessoRepository.findListByUsuarioAndModulo(user, modulo);
+    	UsuarioAcesso usuarioAcesso = usuarioAcessoRepository.findByUsuarioAndModulo(user, modulo);
+    	String ip = requestServlet.getRemoteAddr();
     	
-		if(!listAcessUser.isEmpty()){
-			usuarioAcesso = listAcessUser.get(0);
+		if(usuarioAcesso == null){
+			//usuarioAcesso = listAcessUser.get(0);
+			usuarioAcesso = new UsuarioAcesso();
+			usuarioAcesso.setModulo(modulo);
+			usuarioAcesso.setUsuario(user);
 		}
     	
-    	usuarioAcesso.setModulo(modulo);
-		usuarioAcesso.setUsuario(user);
 		usuarioAcesso.setDataInicio(Calendar.getInstance().getTime());
 		usuarioAcesso.setDataFim(null);
-		usuarioAcesso.setIp(null);		
+		usuarioAcesso.setIp(ip);		
 		
 		usuarioAcessoRepository.save(usuarioAcesso);
     	
