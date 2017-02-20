@@ -75,7 +75,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 							grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+transacao.getLabel().toUpperCase()));
 						});
 												
-				    	UserDetails userDetails = new org.springframework.security.core.userdetails.User(user.getUsuario(), user.getSenha(), grantedAuthorities);				    	
+				    	UserDetails userDetails = new org.springframework.security.core.userdetails.User(user.getLogin(), user.getSenha(), grantedAuthorities);				    	
 				    	GravarAcesso(user, modulo, userDetails);
 				    	
 				    	return userDetails;
@@ -89,7 +89,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 			}
 	    	
 	    	//Gravar Acesso do Usuario.	    		
-	    	UserDetails userDetails = new org.springframework.security.core.userdetails.User(user.getUsuario(), user.getSenha(), grantedAuthorities);
+	    	UserDetails userDetails = new org.springframework.security.core.userdetails.User(user.getLogin(), user.getSenha(), grantedAuthorities);
 	    	GravarAcesso(user, modulo, userDetails);
 	    	
 	    	return userDetails;

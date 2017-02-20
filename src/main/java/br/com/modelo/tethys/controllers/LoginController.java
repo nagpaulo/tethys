@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import br.com.modelo.tethys.auth.model.User;
 import br.com.modelo.tethys.auth.services.SecurityService;
 import br.com.modelo.tethys.auth.services.UserService;
-import br.com.modelo.tethys.auth.services.UsuarioAcessoService;
 import br.com.modelo.tethys.auth.validator.UserValidator;
 
 @Controller
@@ -24,9 +23,6 @@ public class LoginController {
 
     @Autowired
     private UserValidator userValidator;
-
-    @Autowired
-    private UsuarioAcessoService usuarioAcessoService;
     
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
@@ -73,10 +69,7 @@ public class LoginController {
         	model.addAttribute("icons", "fa-exclamation-circle");
         }
         
-        if (logout != null){
-        	//Registrar data do logout.
-        	usuarioAcessoService.regitrarDateEndLogout();
-        	
+        if (logout != null){        	
             model.addAttribute("message", "Você saiu do sistema.");
         	model.addAttribute("type", "alert-warning");
         	model.addAttribute("icons", "fa-info-circle");
