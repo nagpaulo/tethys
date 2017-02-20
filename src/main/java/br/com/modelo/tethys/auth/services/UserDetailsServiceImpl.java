@@ -8,18 +8,21 @@ import java.util.ResourceBundle;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import br.com.modelo.tethys.auth.model.Grupo;
 import br.com.modelo.tethys.auth.model.Modulo;
@@ -47,7 +50,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	private ModuloRepository moduloRepository;
 
 	@Autowired(required = true)
-	private HttpServletRequest requestServlet; 
+	private HttpServletRequest requestServlet;
 	
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor=Exception.class)
@@ -71,10 +74,11 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 						listTransacao.forEach(transacao->{
 							grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+transacao.getLabel().toUpperCase()));
 						});
-						
-						//Gravar Acesso do Usuario.	    		
-				    	GravarAcesso(user, modulo);						
-						return new org.springframework.security.core.userdetails.User(user.getUsuario(), user.getSenha(), grantedAuthorities);
+												
+				    	UserDetails userDetails = new org.springframework.security.core.userdetails.User(user.getUsuario(), user.getSenha(), grantedAuthorities);				    	
+				    	GravarAcesso(user, modulo, userDetails);
+				    	
+				    	return userDetails;
 					}else{
 						Set<Transacao> setTransacao = grupo.getGrupoTransacao();
 						setTransacao.forEach(transacao->{
@@ -85,15 +89,17 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 			}
 	    	
 	    	//Gravar Acesso do Usuario.	    		
-	    	GravarAcesso(user, modulo);	    		
-	    	return new org.springframework.security.core.userdetails.User(user.getUsuario(), user.getSenha(), grantedAuthorities);
+	    	UserDetails userDetails = new org.springframework.security.core.userdetails.User(user.getUsuario(), user.getSenha(), grantedAuthorities);
+	    	GravarAcesso(user, modulo, userDetails);
+	    	
+	    	return userDetails;
     	}else{
     		 return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getSenha(), false, false, false, false, grantedAuthorities);
     	}
 
     }
     
-    public void GravarAcesso(Usuario user, Modulo modulo){
+    public void GravarAcesso(Usuario user, Modulo modulo, UserDetails userDetails){
     	UsuarioAcesso usuarioAcesso = usuarioAcessoRepository.findByUsuarioAndModulo(user, modulo);
     	String ip = requestServlet.getRemoteAddr();
     	
@@ -107,8 +113,20 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		usuarioAcesso.setDataInicio(Calendar.getInstance().getTime());
 		usuarioAcesso.setDataFim(null);
 		usuarioAcesso.setIp(ip);		
-		
 		usuarioAcessoRepository.save(usuarioAcesso);
+		
+		UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
+				userDetails, user.getSenha(), userDetails.getAuthorities());
+		
+		SecurityContext securityContext = SecurityContextHolder.getContext();
+
+		if (usernamePasswordAuthenticationToken.isAuthenticated()) {
+			securityContext.setAuthentication(usernamePasswordAuthenticationToken);
+			
+			// Create a new session and add the security context.
+		    HttpSession session = requestServlet.getSession(true);
+		    session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+		}
     	
     }
 }

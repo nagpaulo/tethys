@@ -36,7 +36,7 @@ public class UsuarioAcessoService {
     	
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     	
-    	Usuario usuario = userRepository.findByLogin(auth.getName());
+    	Usuario usuario = userRepository.findByLogin("NAGPAULO");
 		UsuarioAcesso access = usuarioAcessoRepository.findByUsuarioAndModulo(usuario, modulo);
 		access.setDataInicio(Calendar.getInstance().getTime());
 		usuarioAcessoRepository.save(access);
