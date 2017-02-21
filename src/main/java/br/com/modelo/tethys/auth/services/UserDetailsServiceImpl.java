@@ -1,7 +1,9 @@
 package br.com.modelo.tethys.auth.services;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -11,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -123,9 +124,15 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		if (usernamePasswordAuthenticationToken.isAuthenticated()) {
 			securityContext.setAuthentication(usernamePasswordAuthenticationToken);
 			
+			DateFormat dtHora = DateFormat.getDateTimeInstance();
+			String ultimoAcesso = dtHora.format(usuarioAcesso.getDataInicio());
+			
 			// Create a new session and add the security context.
 		    HttpSession session = requestServlet.getSession(true);
 		    session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+		    session.setAttribute("SECURITY_USER", user);
+		    session.setAttribute("SECURITY_USER_ACCESS", usuarioAcesso);
+		    session.setAttribute("SECURITY_LAST_ACCESS", ultimoAcesso);
 		}
     	
     }

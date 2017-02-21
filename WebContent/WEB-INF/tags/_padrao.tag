@@ -5,8 +5,8 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="template" tagdir="/WEB-INF/tags" %>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="template" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -30,11 +30,16 @@
 <body>
 	<div id="top">
 		<div class="container">
-			<div class="user-info text-right">
+			<div class="user-info">
 		    	<security:authorize access="hasRole('ROLE_USER_AUTH')">
-		    		<i class="fa fa-user"></i> <span>${pageContext.request.userPrincipal.name}</span>
-		    		<i class="fa fa-home"></i> <span>MATRIZ</span>
-		    		<i class="fa fa-calendar-o"></i> <span>Ultimo Acesso</span>
+		    		<div class="text-left user-name">
+			    		<i class="fa fa-user"></i> <span>${SECURITY_USER.usuario}</span>
+		    		</div>
+		    		<div class="text-right">
+		    			<i class="fa fa-sign-in"></i> <span>${pageContext.request.userPrincipal.name}</span>
+			    		<i class="fa fa-home"></i> <span>MATRIZ</span>
+			    		<i class="fa fa-calendar-o"></i> <span>${SECURITY_LAST_ACCESS}</span>
+		    		</div>
 		    	</security:authorize>
 	    	</div>
 			<div class="col-sm-8">

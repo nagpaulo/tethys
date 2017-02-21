@@ -25,7 +25,7 @@
 					data-toggle="dropdown"><i class="fa fa-cog"></i> Configurações<span
 						class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">Alterar senha</a></li>
+						<li><a href="${contextPath}/api/alterarsenha">Alterar Senha</a></li>
 						<li class="divider"></li>
 						<security:authorize access="hasRole('ROLE_MANTER_USUARIO')">
 							<li><a href="#">Usuario</a></li>

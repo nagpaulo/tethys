@@ -151,3 +151,23 @@ body {
     text-transform: uppercase;
     min-height: 15px;
 }
+
+.user-info .user-name {
+	float: left;
+}
+
+.command-page {
+    float: right;
+    margin-top: -35px;
+    font-size: 18px;
+    text-decoration: none !important;
+}
+
+
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
