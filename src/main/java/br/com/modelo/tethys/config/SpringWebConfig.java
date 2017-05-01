@@ -52,6 +52,7 @@ private List<String> allowedOrigins = new ArrayList<>();
 		/*allowedOrigins.add("http://alunoonline.seduc.ce.gov.br");
 		allowedOrigins.add("http://aluno.seduc.ce.gov.br");
 		allowedOrigins.add("http://bolsapaic.seduc.ce.gov.br");	*/
+		allowedOrigins.add("http://localhost:3000");
 		
 		registry.addMapping("/**").allowedOrigins(allowedOrigins.toArray(new String[allowedOrigins.size()]));
 	}
